@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CocoaCharm - Handmade Chocolates</title>
+
+<!-- fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+
+
+<style>
+
+  /*basic reset*/
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: 'Quicksand', sans-serif;
+    background: #fff8f2;
+    color: #4a2c1f;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  ul {
+    list-style: none;
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  .wrapper {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* script */
+  .script {
+    font-family: 'Caveat', cursive;
+  }
+
+  /* NAVBAR  */
+
+  header {
+    background: #fffaf6;
+    border-bottom: 2px solid #f3d9c6;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .navwrap {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 24px;
+    max-width: 1150px;
+    margin: 0 auto;
+  }
+
+  .logo {
+    font-family: 'Caveat', cursive;
+    font-size: 34px;
+    font-weight: 700;
+    color: #7b3f1d;
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+  }
+  .logo span {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: #a97a55;
+    font-weight: 600;
+  }
+
+  nav ul {
+    display: flex;
+    gap: 28px;
+  }
+
+  nav a {
+    font-size: 14px;
+    font-weight: 600;
+    color: #6b3d20;
+    letter-spacing: 0.5px;
+  }
+
+  nav a:hover {
+    color: #d17b3f;
+  }
+
+  .navicons {
+    display: flex;
+    gap: 18px;
+    align-items: center;
+  }
+
+  .cart-btn {
+    background: #e8927c;
+    color: white;
+    padding: 8px 18px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 13px;
+  }
+
+  /*HERO  */
+
+  .hero {
+    background: linear-gradient(180deg, #fbe4d8 0%, #fdf1e6 100%);
+    padding: 60px 0 40px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .hero-photo {
+    width: 300px;
+    border: 10px solid white;
+    box-shadow: 0 10px 25px rgba(90, 50, 20, 0.2);
+    transform: rotate(-6deg);
+    border-radius: 4px;
+  }
+
+  .hero-photo img {
+    border-radius: 2px;
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+  }
+
+  .hero-text {
+    text-align: center;
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .hero-text .eyebrow {
+    font-family: 'Caveat', cursive;
+    font-size: 22px;
+    color: #b5714a;
+  }
+
+  .hero-text h1 {
+    font-family: 'Caveat', cursive;
+    font-size: 62px;
+    color: #7a3b1a;
+    line-height: 1;
+    margin: 6px 0;
+  }
+
+  .hero-text h2 {
+    font-family: 'Caveat', cursive;
+    font-size: 30px;
+    font-weight: 600;
+    color: #9c5a34;
+    margin-bottom: 18px;
+  }
+
+  .btn-main {
+    display: inline-block;
+    background: #a15b32;
+    color: white;
+    padding: 12px 34px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 14px;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 14px rgba(120,70,30,0.3);
+  }
+
+  .btn-main:hover {
+    background: #8a4a26;
+  }
+
+  .hero-photo2 {
+    width: 220px;
+    border: 10px solid white;
+    box-shadow: 0 10px 25px rgba(90, 50, 20, 0.2);
+    transform: rotate(7deg);
+    border-radius: 4px;
+  }
+
+  .hero-photo2 img {
+    border-radius: 2px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+
+  /* little decorationse  */
+  .deco {
+    position: absolute;
+    opacity: 0.6;
+  }
+  .deco.one { top: 10%; left: 4%; font-size: 34px; }
+  .deco.two { bottom: 8%; right: 6%; font-size: 40px; }
+  .deco.three { top: 6%; right: 12%; font-size: 26px; }
+
+  /* INTRO TEXT */
+
+  .intro {
+    text-align: center;
+    padding: 50px 20px 20px;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .intro h3 {
+    font-size: 20px;
+    font-weight: 700;
+    margin-bottom: 12px;
+    color: #6b3d20;
+  }
+
+  .intro p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #8a6b57;
+    margin-bottom: 18px;
+  }
+
+  .btn-outline {
+    display: inline-block;
+    border: 2px solid #a15b32;
+    color: #a15b32;
+    padding: 8px 22px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .btn-outline:hover {
+    background: #a15b32;
+    color: white;
+  }
+
+  /* TOP SELLERS  */
+
+  .sellers {
+    padding: 40px 0 60px;
+  }
+
+  .section-title {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  .section-title .script {
+    font-size: 30px;
+    color: #7a3b1a;
+  }
+
+  .section-title .script b {
+    color: #d17b3f;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+
+  .product-card {
+    background: white;
+    border-radius: 14px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(122, 78, 40, 0.12);
+    text-align: center;
+    padding-bottom: 16px;
+  }
+
+  .product-card .imgbox {
+    background: #fdece0;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  .product-card .imgbox img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .product-card h4 {
+    margin-top: 12px;
+    font-size: 15px;
+    font-weight: 700;
+    color: #5c3a22;
+  }
+
+  .product-card .price {
+    color: #b5714a;
+    font-size: 13px;
+    margin-top: 4px;
+    font-weight: 600;
+  }
+
+  /*SHOP BY COLLECTION  */
+
+  .collection {
+    background: #f3d9c6;
+    padding: 60px 0;
+    text-align: center;
+  }
+
+  .collection h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 34px;
+    color: #6b3d20;
+    margin-bottom: 30px;
+  }
+
+  .blob-row {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+  }
+
+  .blob {
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-size: 15px;
+    text-align: center;
+    border-radius: 42% 58% 65% 35% / 45% 45% 55% 55%;
+    transition: transform 0.2s ease;
+  }
+
+  .blob:hover {
+    transform: scale(1.06) rotate(2deg);
+  }
+
+  .blob.b1 { background: #e8927c; }
+  .blob.b2 { background: #c98a52; }
+  .blob.b3 { background: #d17b3f; }
+  .blob.b4 { background: #a15b32; }
+
+  /* STORY SECTION */
+
+  .story {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 70px 0;
+    flex-wrap: wrap;
+  }
+
+  .story-text {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .story-text h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 34px;
+    color: #7a3b1a;
+    margin-bottom: 14px;
+  }
+
+  .story-text p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #8a6b57;
+    margin-bottom: 18px;
+  }
+
+  .story-img {
+    flex: 1;
+    min-width: 260px;
+  }
+
+  .story-img .photo-frame {
+    background: #fdece0;
+    border-radius: 16px;
+    height: 300px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(90,50,20,0.15);
+  }
+
+  .story-img .photo-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* SHOP WITH US ICON STRIP  */
+
+  .shopwithus {
+    background: #fff2e6;
+    padding: 50px 0;
+    text-align: center;
+  }
+
+  .shopwithus h3 {
+    font-family: 'Caveat', cursive;
+    font-size: 28px;
+    color: #7a3b1a;
+    margin-bottom: 30px;
+  }
+
+  .icon-row {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    flex-wrap: wrap;
+  }
+
+  .icon-item {
+    font-size: 34px;
+  }
+
+  .icon-item p {
+    font-size: 12px;
+    margin-top: 8px;
+    color: #8a6b57;
+    font-weight: 600;
+  }
+
+  /* FOOTER */
+
+  footer {
+    background: #6b3d20;
+    color: #f3d9c6;
+    text-align: center;
+    padding: 30px 10px;
+    font-size: 13px;
+  }
+
+  footer .logo2 {
+    font-family: 'Caveat', cursive;
+    font-size: 26px;
+    color: white;
+    margin-bottom: 8px;
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 750px) {
+
+    nav ul {
+      display: none; 
+    }
+
+    .hero-text h1 {
+      font-size: 44px;
+    }
+
+    .hero-photo, .hero-photo2 {
+      width: 150px;
+    }
+
+    .product-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .story {
+      flex-direction: column;
+    }
+
+    .blob {
+      width: 110px;
+      height: 110px;
+      font-size: 13px;
+    }
+  }
+
+</style>
+</head>
+<body>
+
+  <header>
+    <div class="navwrap">
+      <div class="logo">CocoaCharm <span>HANDMADE CHOCOLATES</span></div>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">New Arrivals</a></li>
+          <li><a href="#">Shop</a></li>
+          <li><a href="#">Our Story</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="navicons">
+        <a href="#" class="cart-btn">Cart (0)</a>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <span class="deco one">🍫</span>
+    <span class="deco two">🤎</span>
+    <span class="deco three">✨</span>
+    <div class="wrapper hero-inner">
+
+      <div class="hero-photo">
+        <img src="assets/images/chocolate_bar.jpeg" alt="chocolate bar">
+      </div>
+
+      <div class="hero-text">
+        <p class="eyebrow">let's indulge in the</p>
+        <h1>Sweetest<br>Collection</h1>
+        <h2>truffles, bars &amp; gift boxes</h2>
+        <a href="#" class="btn-main">SHOP NOW</a>
+      </div>
+
+      <div class="hero-photo2">
+        <img src="assets/images/gift_hamper.jpeg" alt="gift box">
+      </div>
+
+    </div>
+  </section>
+
+  <section class="intro wrapper">
+    <h3>Made With Love For Chocolate Lovers</h3>
+    <p>
+      Welcome to CocoaCharm, a tiny home-based chocolate business started
+      in our kitchen with a big love for cocoa. Every bar, truffle and
+      praline is handmade in small batches using real cream and good
+      quality chocolate, no shortcuts.
+    </p>
+    <a href="#" class="btn-outline">READ MORE</a>
+  </section>
+
+  <section class="sellers wrapper">
+    <div class="section-title">
+      <p class="script">shop the <b>best sellers</b> 🍬</p>
+    </div>
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="imgbox"><img src="assets/images/bestseller_dark.jpeg" alt="Classic Dark Bar"></div>
+        <h4>Classic Dark Bar</h4>
+        <p class="price">₹199.00</p>
+      </div>
+
+      <div class="product-card">
+        <div class="imgbox"><img src="assets/images/truffle.jpeg" alt="Assorted Truffle Box"></div>
+        <h4>Assorted Truffle Box</h4>
+        <p class="price">₹499.00</p>
+      </div>
+
+      <div class="product-card">
+        <div class="imgbox"><img src="assets/images/fudge_bites.jpeg" alt="Choco Fudge Bites"></div>
+        <h4>Choco Fudge Bites</h4>
+        <p class="price">₹249.00</p>
+      </div>
+
+      <div class="product-card">
+        <div class="imgbox"><img src="assets/images/small_hamper.jpeg" alt="Gift Hamper Small"></div>
+        <h4>Gift Hamper Small</h4>
+        <p class="price">₹699.00</p>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="collection">
+    <h3>shop by collection</h3>
+    <div class="wrapper blob-row">
+      <div class="blob b1">BEST<br>SELLERS</div>
+      <div class="blob b2">GIFT<br>BOXES</div>
+      <div class="blob b3">DARK<br>CHOCOLATE</div>
+      <div class="blob b4">NEW<br>ARRIVALS</div>
+    </div>
+  </section>
+
+  <section class="story wrapper">
+    <div class="story-img">
+      <div class="photo-frame"><img src="assets/images/our_story.jpeg" alt="our story"></div>
+    </div>
+    <div class="story-text">
+      <h3>Our Sweet Little Story</h3>
+      <p>
+        CocoaCharm began as a weekend hobby when we started gifting
+        homemade chocolates to friends and family. The response was so
+        sweet (pun intended) that we decided to turn it into a proper
+        small business. Today we still make everything by hand, in
+        small batches, with the same love as our very first box.
+      </p>
+      <p>
+        No preservatives, no shortcuts, just good chocolate made with
+        care.
+      </p>
+      <a href="#" class="btn-main">OUR STORY</a>
+    </div>
+  </section>
+
+  <section class="shopwithus">
+    <h3>✷ shop with us ✷</h3>
+    <div class="wrapper icon-row">
+      <div class="icon-item">🎂<p>Custom Orders</p></div>
+      <div class="icon-item">🚚<p>Home Delivery</p></div>
+      <div class="icon-item">🎀<p>Gift Wrapping</p></div>
+      <div class="icon-item">💌<p>Personal Notes</p></div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="logo2">CocoaCharm</div>
+    <p>&copy; 2026 CocoaCharm Handmade Chocolates. Made with love, one batch at a time.</p>
+  </footer>
+
+</body>
+</html>
